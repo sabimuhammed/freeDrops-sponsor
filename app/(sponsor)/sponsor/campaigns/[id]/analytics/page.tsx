@@ -55,12 +55,31 @@ export default function SponsorCampaignAnalyticsPage({ params }: { params: { id:
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="bg-white border border-gray-200 rounded-2xl p-6">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="font-bold text-gray-900">Scan Trend (30 days)</h3>
+            <h3 className="font-bold text-gray-900">Scans by Month</h3>
+            <span className="px-3 py-1 bg-gray-50 border border-gray-200 rounded-full text-xs font-semibold text-gray-500">This Year</span>
           </div>
-          <div className="flex items-end gap-1 h-40">
-            {[30, 45, 60, 40, 75, 65, 80, 55, 90, 70, 85, 95, 88, 100].map((h, i) => (
-              <div key={i} className="flex-1 bg-red-50 rounded-t-sm" style={{ height: `${h}%` }}>
-                <div className="w-full bg-[#D63839] rounded-t-sm h-full opacity-70 hover:opacity-100 transition-opacity cursor-pointer" />
+          <div className="flex items-end gap-1.5 h-40">
+            {[
+              { month: "Jan", h: 35 },
+              { month: "Feb", h: 50 },
+              { month: "Mar", h: 42 },
+              { month: "Apr", h: 68 },
+              { month: "May", h: 60 },
+              { month: "Jun", h: 80 },
+              { month: "Jul", h: 72 },
+              { month: "Aug", h: 100 },
+              { month: "Sep", h: 88 },
+              { month: "Oct", h: 65 },
+              { month: "Nov", h: 55 },
+              { month: "Dec", h: 45 },
+            ].map((m) => (
+              <div key={m.month} className="flex-1 flex flex-col items-center gap-2">
+                <div className="w-full flex items-end h-32">
+                  <div className="w-full bg-red-50 rounded-t-sm" style={{ height: `${m.h}%` }}>
+                    <div className="w-full h-full bg-[#D63839] rounded-t-sm opacity-70 hover:opacity-100 transition-opacity cursor-pointer" />
+                  </div>
+                </div>
+                <span className="text-[9px] font-semibold text-gray-400 uppercase">{m.month}</span>
               </div>
             ))}
           </div>
