@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Icon } from "@iconify/react";
 import CampaignDetailTabs from "@/components/sponsor/CampaignDetailTabs";
 import AnimatedPage from "@/components/shared/AnimatedPage";
-import { AnimatedGrid, AnimatedCell } from "@/components/shared/AnimatedGrid";
 
 export const metadata = { title: "Project Brief | FreeDrops Sponsor Portal" };
 
@@ -29,41 +28,116 @@ export default function SponsorCampaignProjectBriefPage({ params }: { params: { 
 
       <CampaignDetailTabs id={params.id} active="project-brief" />
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Brief overview */}
-        <div className="lg:col-span-2 bg-white border border-gray-200 rounded-2xl p-6">
-          <h3 className="font-bold text-gray-900 mb-4">Project Brief</h3>
-          <p className="text-sm text-gray-600 leading-relaxed">
-            FreeDrops connects sponsors with audiences by distributing free, sponsored water at high-traffic
-            locations. Every bottle carries your branded QR code, turning a simple act of hydration into a
-            measurable touchpoint that drives scans, clicks, and leads back to your campaign.
-          </p>
+      <div className="bg-white border border-slate-100 rounded-[32px] shadow-sm p-8 md:p-10">
+        {/* Header */}
+        <div className="flex items-start justify-between gap-4 mb-1">
+          <h2 className="text-3xl font-bold text-slate-900">Project Brief</h2>
+          <span className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 bg-indigo-50 text-indigo-600 text-[11px] font-bold uppercase tracking-widest rounded-full">
+            <Icon icon="lucide:lightbulb" className="text-sm" />
+            Strategy Phase
+          </span>
+        </div>
+        <p className="text-slate-500 max-w-xl mb-10">
+          Help us understand your brand and objectives to ensure the highest quality campaign execution and placement.
+        </p>
 
-          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-            {[
-              { label: "Objective", value: "Brand awareness & lead capture" },
-              { label: "Audience", value: "Urban commuters, Dubai & Abu Dhabi" },
-              { label: "Duration", value: "Aug 15 – Sep 30, 2024" },
-              { label: "Distribution", value: "15,000 sponsored bottles" },
-            ].map((r) => (
-              <div key={r.label} className="border border-gray-100 rounded-xl p-4">
-                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{r.label}</p>
-                <p className="font-semibold text-gray-900 mt-1">{r.value}</p>
+        <form className="space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Industry / Field */}
+            <div className="space-y-2">
+              <label htmlFor="industry" className="block text-xs font-bold text-slate-700 uppercase tracking-widest">
+                Industry / Field
+              </label>
+              <div className="relative">
+                <select
+                  id="industry"
+                  defaultValue=""
+                  className="w-full appearance-none px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl text-sm text-slate-900 focus:ring-2 focus:ring-[#D63839] focus:border-[#D63839] outline-none transition-all"
+                >
+                  <option value="" disabled>Select your industry</option>
+                  <option value="fmcg">FMCG / Consumer Goods</option>
+                  <option value="tech">Technology / SaaS</option>
+                  <option value="finance">Finance / Banking</option>
+                  <option value="retail">Retail / E-commerce</option>
+                  <option value="hospitality">Hospitality / F&amp;B</option>
+                  <option value="health">Health &amp; Wellness</option>
+                  <option value="realestate">Real Estate</option>
+                  <option value="other">Other</option>
+                </select>
+                <Icon icon="lucide:chevron-down" className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-slate-400" />
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
 
-        {/* Responsible Packaging */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-6">
-          <div className="w-9 h-9 bg-emerald-50 rounded-xl flex items-center justify-center mb-3">
-            <Icon icon="lucide:recycle" className="text-emerald-600 text-lg" />
+            {/* Business Model */}
+            <div className="space-y-2">
+              <label htmlFor="business-model" className="block text-xs font-bold text-slate-700 uppercase tracking-widest">
+                Business Model
+              </label>
+              <input
+                type="text"
+                id="business-model"
+                placeholder="e.g. B2C, B2B, Hybrid..."
+                className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl text-sm text-slate-900 placeholder:text-slate-400 focus:ring-2 focus:ring-[#D63839] focus:border-[#D63839] outline-none transition-all"
+              />
+            </div>
           </div>
-          <h3 className="font-bold text-gray-900 mb-2">Responsible Packaging</h3>
-          <p className="text-sm text-gray-600 leading-relaxed">
-            We use recyclable PET bottles to distribute sponsored water in a more environmentally responsible way.
-          </p>
-        </div>
+
+          {/* Brand Nature */}
+          <div className="space-y-2">
+            <label htmlFor="brand-nature" className="block text-xs font-bold text-slate-700 uppercase tracking-widest">
+              Brand Nature
+            </label>
+            <textarea
+              id="brand-nature"
+              rows={4}
+              placeholder="Describe your brand's personality, tone of voice, and core values..."
+              className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl text-sm text-slate-900 placeholder:text-slate-400 focus:ring-2 focus:ring-[#D63839] focus:border-[#D63839] outline-none transition-all resize-none"
+            />
+          </div>
+
+          {/* Label Design Objective */}
+          <div className="space-y-2">
+            <label htmlFor="label-objective" className="block text-xs font-bold text-slate-700 uppercase tracking-widest">
+              Label Design Objective
+            </label>
+            <textarea
+              id="label-objective"
+              rows={4}
+              placeholder="What do you want to achieve with this label? (e.g., brand awareness, drive app installs, direct sales, seasonal promotion...)"
+              className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl text-sm text-slate-900 placeholder:text-slate-400 focus:ring-2 focus:ring-[#D63839] focus:border-[#D63839] outline-none transition-all resize-none"
+            />
+          </div>
+
+          {/* Target Audience */}
+          <div className="space-y-2">
+            <label htmlFor="target-audience" className="block text-xs font-bold text-slate-700 uppercase tracking-widest">
+              Target Audience
+            </label>
+            <textarea
+              id="target-audience"
+              rows={4}
+              placeholder="Who are you trying to reach? (e.g., Professionals in Downtown Dubai, Students, Fitness enthusiasts...)"
+              className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl text-sm text-slate-900 placeholder:text-slate-400 focus:ring-2 focus:ring-[#D63839] focus:border-[#D63839] outline-none transition-all resize-none"
+            />
+          </div>
+
+          {/* Actions */}
+          <div className="flex items-center justify-end gap-6 pt-8 border-t border-slate-100">
+            <button
+              type="button"
+              className="font-bold text-slate-600 hover:text-slate-900 text-sm transition-all"
+            >
+              Save as Draft
+            </button>
+            <button
+              type="submit"
+              className="flex items-center gap-2 bg-[#D63839] hover:opacity-90 text-white px-8 py-4 rounded-2xl font-bold text-sm transition-all shadow-lg shadow-red-200"
+            >
+              Submit Brief
+              <Icon icon="lucide:arrow-right" />
+            </button>
+          </div>
+        </form>
       </div>
     </div>
     </AnimatedPage>

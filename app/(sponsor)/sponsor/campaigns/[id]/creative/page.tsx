@@ -3,6 +3,7 @@ import { Icon } from "@iconify/react";
 import CampaignDetailTabs from "@/components/sponsor/CampaignDetailTabs";
 import AnimatedPage from "@/components/shared/AnimatedPage";
 import { AnimatedGrid, AnimatedCell } from "@/components/shared/AnimatedGrid";
+import UploadAssetModal from "@/components/sponsor/UploadAssetModal";
 
 export const metadata = { title: "Campaign Creative | FreeDrops Sponsor Portal" };
 
@@ -27,22 +28,12 @@ export default function SponsorCampaignCreativePage({ params }: { params: { id: 
           </nav>
           <h1 className="text-2xl font-bold text-gray-900">Spring Oasis Launch 2024</h1>
         </div>
-        <button className="flex items-center gap-2 bg-[#D63839] hover:opacity-90 text-white px-5 py-2.5 rounded-xl text-sm font-bold transition-all shadow-sm shadow-red-200">
-          <Icon icon="lucide:upload" />Upload Asset
-        </button>
+        <UploadAssetModal />
       </div>
 
       <CampaignDetailTabs id={params.id} active="creative" />
 
-      <div className="mb-6 border-2 border-dashed border-gray-200 rounded-2xl p-8 flex flex-col items-center gap-3 bg-gray-50/50 hover:bg-gray-50 transition-colors cursor-pointer">
-        <Icon icon="lucide:upload-cloud" className="text-3xl text-gray-400" />
-        <div className="text-center">
-          <p className="text-sm font-bold text-gray-700">Upload new creative asset</p>
-          <p className="text-xs text-gray-400 mt-1">PNG, AI, PDF, SVG (Max 50MB)</p>
-        </div>
-      </div>
-
-      <AnimatedGrid className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <AnimatedGrid className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
         {assets.map((a) => (
           <AnimatedCell key={a.name} className="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:border-[#D63839] transition-all">
             <div className="bg-gray-50 h-36 flex items-center justify-center">

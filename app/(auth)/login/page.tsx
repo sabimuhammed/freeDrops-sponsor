@@ -12,11 +12,7 @@ export default function LoginPage() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (email === "admin@gmail.com") {
-      router.push("/admin/dashboard");
-    } else if (email === "sponsor@gmail.com") {
-      router.push("/sponsor/dashboard");
-    }
+    router.push("/sponsor/dashboard");
   }
 
   return (
