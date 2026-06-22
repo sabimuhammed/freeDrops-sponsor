@@ -226,19 +226,20 @@ export default function MyCampaignsPage() {
                     Completed: "text-slate-500",
                   };
                   return (
-                  <AnimatedRow key={c.id} className="hover:bg-slate-50/50 transition-colors">
+                  <AnimatedRow key={c.id} className="hover:bg-slate-50/50 transition-colors relative">
                     <td className="px-6 py-4">
-                      <span className="font-bold text-slate-900">{c.name}</span>
+                      <Link href={`/sponsor/campaigns/${c.id}/overview`} className="absolute inset-0" />
+                      <span className="font-bold text-slate-900 relative">{c.name}</span>
                     </td>
                     <td className="px-6 py-4 text-sm text-slate-600">Masafi Water</td>
                     <td className="px-6 py-4">
                       <span className={`text-sm font-semibold ${statusTextColor[c.status] ?? "text-slate-500"}`}>{c.status}</span>
                     </td>
                     <td className="px-6 py-4">
-                      <span className={`text-sm font-bold ${c.uniqueScans === "0" ? "text-purple-600" : "text-purple-600"}`}>{c.uniqueScans}</span>
+                      <span className="text-sm font-bold text-purple-600">{c.uniqueScans}</span>
                     </td>
                     <td className="px-6 py-4">
-                      <span className={`text-sm text-slate-600 ${c.startMuted || c.startItalic ? "text-slate-400" : ""}`}>
+                      <span className={`text-sm ${c.startMuted || c.startItalic ? "text-slate-400" : "text-slate-600"}`}>
                         {c.startMuted || c.startItalic ? "—" : c.start}
                       </span>
                     </td>
@@ -255,12 +256,7 @@ export default function MyCampaignsPage() {
                       <span className="text-sm text-slate-600">{c.leads === null || c.leads === "—" ? "0" : c.leads}</span>
                     </td>
                     <td className="px-6 py-4 text-right">
-                      <Link
-                        href={`/sponsor/campaigns/${c.id}/overview`}
-                        className="text-[#D63839] text-xs font-bold uppercase tracking-wider hover:text-red-700 transition-colors"
-                      >
-                        View
-                      </Link>
+                      <span className="text-[#D63839] text-xs font-bold uppercase tracking-wider">View</span>
                     </td>
                   </AnimatedRow>
                   );
