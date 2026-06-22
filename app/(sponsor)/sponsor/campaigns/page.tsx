@@ -7,11 +7,8 @@ export const metadata = { title: "My Campaigns | FreeDrops Sponsor Portal" };
 
 const stats = [
   {
-    label: "Bottles Scanned",
+    label: "Bottles",
     value: "2,450",
-    sub: "/ 5,000",
-    badge: "49% Scanned",
-    badgeSub: "vs distributed",
     icon: "lucide:package-check",
     color: "text-[#D63839]",
     bg: "bg-red-50",
@@ -19,7 +16,6 @@ const stats = [
   {
     label: "Total Scans",
     value: "14,205",
-    note: "Across all campaigns",
     icon: "lucide:scan-qr-code",
     color: "text-blue-600",
     bg: "bg-blue-50",
@@ -27,7 +23,6 @@ const stats = [
   {
     label: "Unique Scans",
     value: "12,504",
-    note: "Distinct devices",
     icon: "lucide:qr-code",
     color: "text-[#D63839]",
     bg: "bg-red-50",
@@ -35,7 +30,6 @@ const stats = [
   {
     label: "Total Clicks",
     value: "3,110",
-    note: "Avg. CTR 21.9%",
     icon: "lucide:mouse-pointer-2",
     color: "text-orange-600",
     bg: "bg-orange-50",
@@ -43,7 +37,6 @@ const stats = [
   {
     label: "Total Leads",
     value: "842",
-    note: "Conversion Rate 27.1%",
     icon: "lucide:users",
     color: "text-green-600",
     bg: "bg-green-50",
@@ -188,17 +181,7 @@ export default function MyCampaignsPage() {
               </div>
               <div className="mt-4">
                 <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">{s.label}</p>
-                <div className="flex items-baseline gap-1 mt-1">
-                  <h3 className="text-2xl font-bold text-slate-900">{s.value}</h3>
-                  {s.sub && <span className="text-sm font-medium text-slate-400">{s.sub}</span>}
-                </div>
-                {s.badge && (
-                  <div className="flex items-center gap-1.5 mt-1">
-                    <span className="text-[10px] font-bold text-[#D63839] uppercase tracking-wider">{s.badge}</span>
-                    {s.badgeSub && <span className="text-[10px] text-slate-400 font-medium tracking-tight">{s.badgeSub}</span>}
-                  </div>
-                )}
-                {s.note && <p className="text-[10px] text-slate-400 font-medium mt-1">{s.note}</p>}
+                <h3 className="text-2xl font-bold text-slate-900 mt-1">{s.value}</h3>
               </div>
             </AnimatedCell>
           ))}
