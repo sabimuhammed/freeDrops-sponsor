@@ -281,7 +281,7 @@ export default function MyCampaignsPage() {
                     <td className="px-6 py-4 text-right">
                       {c.action && (
                         <Link
-                          href="/sponsor/campaigns/1/analytics"
+                          href={`/sponsor/campaigns/${c.id}/overview`}
                           className="inline-flex items-center gap-2 px-3 py-1.5 text-slate-400 hover:text-slate-900 hover:bg-slate-200/50 rounded-lg text-xs font-bold transition-all uppercase tracking-wider"
                         >
                           {c.action}
