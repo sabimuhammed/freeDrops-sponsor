@@ -7,8 +7,8 @@ export const metadata = { title: "Sponsor Dashboard | FreeDrops" };
 
 const stats = [
   { label: "Bottles Scanned", value: "2,450", icon: "lucide:package-check", color: "text-[#D63839]", bg: "bg-red-50" },
-  { label: "Total Scans", value: "14,205", icon: "lucide:scan-line", color: "text-[#D63839]", bg: "bg-red-50" },
   { label: "Total Unique Scans", value: "12,504", icon: "lucide:qr-code", color: "text-[#D63839]", bg: "bg-red-50" },
+  { label: "Total Scans", value: "14,205", icon: "lucide:scan-line", color: "text-[#D63839]", bg: "bg-red-50" },
   { label: "Total CTA Clicks", value: "3,110", icon: "lucide:mouse-pointer-2", color: "text-emerald-600", bg: "bg-emerald-50" },
   { label: "Total Leads", value: "842", icon: "lucide:user-round-plus", color: "text-amber-600", bg: "bg-amber-50" },
   { label: "Active Campaigns", value: "2", icon: "lucide:trending-up", color: "text-purple-600", bg: "bg-purple-50" },
@@ -139,7 +139,7 @@ export default function SponsorDashboardPage() {
             <table className="w-full text-left">
               <thead className="bg-slate-50 border-y border-slate-100">
                 <tr>
-                  {["Campaign", "Total Bottles", "Scans", "Unique Scans", "Clicks", "Leads", "Status"].map((h) => (
+                  {["Campaign", "Total Bottles", "Unique Scans", "Scans", "Clicks", "Leads", "Status"].map((h) => (
                     <th key={h} className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider whitespace-nowrap">
                       {h}
                     </th>
@@ -158,8 +158,8 @@ export default function SponsorDashboardPage() {
                       </div>
                     </td>
                     <td className="px-6 py-5 text-sm font-bold text-slate-900 font-mono">{c.bottles}</td>
-                    <td className="px-6 py-5 text-sm text-slate-600 font-mono">{c.scans}</td>
                     <td className="px-6 py-5 text-sm font-semibold text-purple-700 font-mono">{c.uniqueScans}</td>
+                    <td className="px-6 py-5 text-sm text-slate-600 font-mono">{c.scans}</td>
                     <td className="px-6 py-5 text-sm text-slate-600 font-mono">{c.clicks}</td>
                     <td className="px-6 py-5 text-sm text-slate-400 font-mono">{c.leads}</td>
                     <td className="px-6 py-5">
