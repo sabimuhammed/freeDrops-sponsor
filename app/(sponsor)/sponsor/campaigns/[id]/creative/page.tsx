@@ -3,14 +3,17 @@ import { Icon } from "@iconify/react";
 import CampaignDetailTabs from "@/components/sponsor/CampaignDetailTabs";
 import AnimatedPage from "@/components/shared/AnimatedPage";
 import { AnimatedGrid, AnimatedCell } from "@/components/shared/AnimatedGrid";
-import UploadAssetModal from "@/components/sponsor/UploadAssetModal";
 
-export const metadata = { title: "Campaign Creative | FreeDrops Sponsor Portal" };
+export const metadata = { title: "Campaign Creatives | FreeDrops Sponsor Portal" };
 
 const assets = [
-  { name: "Main Banner", format: "PNG", size: "1200×600px", status: "Approved" },
-  { name: "QR Sticker", format: "SVG", size: "500×500px", status: "Approved" },
-  { name: "Side Panel Art", format: "JPG", size: "300×600px", status: "Pending Review" },
+  {
+    name: "Campaign Banner",
+    format: "PNG",
+    size: "—",
+    status: "Approved",
+    note: "Saved on campaign",
+  },
 ];
 
 export default function SponsorCampaignCreativePage({ params }: { params: { id: string } }) {
@@ -26,31 +29,33 @@ export default function SponsorCampaignCreativePage({ params }: { params: { id: 
               <li><span className="font-bold text-gray-900">Spring Oasis Launch 2024</span></li>
             </ol>
           </nav>
-          <h1 className="text-2xl font-bold text-gray-900">Spring Oasis Launch 2024</h1>
+          <h1 className="text-2xl font-bold text-gray-900">Spring Oasis Launch 2024 Creatives</h1>
         </div>
-        <UploadAssetModal />
       </div>
 
       <CampaignDetailTabs id={params.id} active="creative" />
 
-      <AnimatedGrid className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+      <AnimatedGrid className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-2">
         {assets.map((a) => (
-          <AnimatedCell key={a.name} className="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:border-[#D63839] transition-all">
-            <div className="bg-gray-50 h-36 flex items-center justify-center">
-              <Icon icon="lucide:image" className="text-4xl text-gray-300" />
+          <AnimatedCell key={a.name} className="bg-white border border-gray-200 rounded-2xl overflow-hidden">
+            <div className="bg-gray-50 h-48 flex items-center justify-center border-b border-gray-100">
+              <Icon icon="lucide:image" className="text-5xl text-gray-300" />
             </div>
-            <div className="p-4">
-              <div className="flex items-start justify-between mb-2">
-                <div>
-                  <p className="text-sm font-bold text-gray-900">{a.name}</p>
-                  <p className="text-xs text-gray-400">{a.format} • {a.size}</p>
-                </div>
-                <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${a.status === "Approved" ? "bg-green-50 text-green-700" : "bg-amber-50 text-amber-700"}`}>{a.status}</span>
+            <div className="p-5">
+              <div className="flex items-start justify-between mb-1">
+                <p className="text-sm font-bold text-gray-900">{a.name}</p>
+                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase bg-green-50 text-green-700 border border-green-100">
+                  {a.status}
+                </span>
               </div>
-              <div className="flex items-center gap-3 mt-3 pt-3 border-t border-gray-50">
-                <button className="text-gray-400 hover:text-[#D63839]"><Icon icon="lucide:download" className="text-sm" /></button>
-                <button className="text-gray-400 hover:text-red-500"><Icon icon="lucide:trash-2" className="text-sm" /></button>
-              </div>
+              <p className="text-xs text-gray-400">{a.format} • {a.size}</p>
+              <p className="text-xs text-gray-400 mt-1">{a.note}</p>
+            </div>
+            <div className="flex items-center justify-between px-5 py-3 border-t border-gray-100">
+              <span className="text-xs text-gray-400 font-medium">Review Completed</span>
+              <button className="text-gray-400 hover:text-gray-600 transition-colors">
+                <Icon icon="lucide:download" className="text-lg" />
+              </button>
             </div>
           </AnimatedCell>
         ))}

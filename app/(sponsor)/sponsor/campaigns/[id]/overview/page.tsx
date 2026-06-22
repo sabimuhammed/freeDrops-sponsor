@@ -36,7 +36,7 @@ export default function SponsorCampaignOverviewPage({ params }: { params: { id: 
           { label: "Unique Scans", value: "12,504", icon: "lucide:qr-code", color: "text-[#D63839]", bg: "bg-red-50" },
           { label: "Total Clicks", value: "3,218", icon: "lucide:mouse-pointer-click", color: "text-blue-600", bg: "bg-blue-50" },
           { label: "Leads Captured", value: "452", icon: "lucide:users", color: "text-emerald-600", bg: "bg-emerald-50" },
-          { label: "Conversion Rate", value: "14.0%", icon: "lucide:trending-up", color: "text-purple-600", bg: "bg-purple-50" },
+          { label: "QR Engagement Rate", value: "14.0%", icon: "lucide:trending-up", color: "text-purple-600", bg: "bg-purple-50" },
         ].map((s) => (
           <AnimatedCell key={s.label} className="bg-white border border-gray-200 rounded-2xl p-5">
             <div className={`w-9 h-9 ${s.bg} rounded-xl flex items-center justify-center mb-3`}>
@@ -52,11 +52,16 @@ export default function SponsorCampaignOverviewPage({ params }: { params: { id: 
         <h3 className="font-bold text-gray-900 mb-4">Campaign Details</h3>
         <dl className="space-y-3 text-sm">
           {[
+            { label: "Sponsor", value: "Masafi Water" },
             { label: "Start Date", value: "Aug 15, 2024" },
             { label: "End Date", value: "Sep 30, 2024" },
-            { label: "CTA Type", value: "FreeDrops Landing Page" },
+            { label: "CTA Type", value: "External URL" },
+            { label: "Coupon", value: "SUMMER 200 - 10 AED Off" },
             { label: "Total Bottles", value: "15,000" },
+            { label: "QR Links", value: "1" },
             { label: "Locations", value: "2 (Dubai)" },
+            { label: "Location Names", value: "Dubai Mall, Mall of Emirates" },
+            { label: "Lead Rate", value: "14.0%" },
             { label: "Status", value: "Live" },
           ].map((r) => (
             <div key={r.label} className="flex justify-between py-2 border-b border-gray-50 last:border-0">

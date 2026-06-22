@@ -32,10 +32,7 @@ export default function SponsorCampaignProjectBriefPage({ params }: { params: { 
         {/* Header */}
         <div className="flex items-start justify-between gap-4 mb-1">
           <h2 className="text-3xl font-bold text-slate-900">Project Brief</h2>
-          <span className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 bg-indigo-50 text-indigo-600 text-[11px] font-bold uppercase tracking-widest rounded-full">
-            <Icon icon="lucide:lightbulb" className="text-sm" />
-            Strategy Phase
-          </span>
+         
         </div>
         <p className="text-slate-500 max-w-xl mb-10">
           Help us understand your brand and objectives to ensure the highest quality campaign execution and placement.

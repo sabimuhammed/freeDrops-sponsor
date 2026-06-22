@@ -59,7 +59,7 @@ const campaigns = [
     uniqueScans: "2,410",
     clicks: "412",
     leads: "—",
-    action: "View Details",
+    action: "View",
     actionIcon: "lucide:arrow-right",
   },
   {
@@ -77,7 +77,7 @@ const campaigns = [
     uniqueScans: "1,640",
     clicks: "285",
     leads: "—",
-    action: "View Details",
+    action: "View",
     actionIcon: "lucide:arrow-right",
   },
   {
@@ -188,92 +188,83 @@ export default function MyCampaignsPage() {
         </AnimatedGrid>
 
         {/* Filter Bar */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-4 rounded-2xl login-card">
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0">
-            <button className="px-4 py-2 bg-slate-900 text-white rounded-lg text-sm font-bold whitespace-nowrap">All Campaigns</button>
-            <button className="px-4 py-2 hover:bg-slate-50 text-slate-600 rounded-lg text-sm font-medium whitespace-nowrap transition-colors">Draft</button>
-            <button className="px-4 py-2 hover:bg-slate-50 text-slate-600 rounded-lg text-sm font-medium whitespace-nowrap transition-colors">In Review</button>
-            <button className="px-4 py-2 hover:bg-slate-50 text-slate-600 rounded-lg text-sm font-medium whitespace-nowrap transition-colors">Live</button>
-            <button className="px-4 py-2 hover:bg-slate-50 text-slate-600 rounded-lg text-sm font-medium whitespace-nowrap transition-colors">Completed</button>
+        <div className="flex items-center gap-4">
+          <div className="relative flex-1">
+            <Icon icon="lucide:search" className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm" />
+            <input
+              type="text"
+              placeholder="Search campaign or sponsor..."
+              className="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#D63839]/20 transition-all"
+            />
           </div>
-          <div className="flex items-center gap-3">
-            <button className="flex items-center gap-2 px-3 py-2 border border-slate-200 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors">
-              <Icon icon="lucide:filter" />
-              <span>More Filters</span>
-            </button>
-            <button className="flex items-center gap-2 px-3 py-2 border border-slate-200 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors">
-              <Icon icon="lucide:download" />
-              <span>Export</span>
-            </button>
-          </div>
+          <select className="px-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm font-medium text-slate-600 focus:outline-none focus:ring-2 focus:ring-[#D63839]/20 cursor-pointer">
+            <option value="all">All Statuses</option>
+            <option value="draft">Draft</option>
+            <option value="in-review">In Review</option>
+            <option value="live">Live</option>
+            <option value="completed">Completed</option>
+          </select>
         </div>
 
         {/* Campaigns Table */}
         <div className="bg-white rounded-3xl login-card overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
-              <thead className="bg-slate-50 border-b border-slate-100">
+              <thead className="border-b border-slate-100">
                 <tr>
-                  {["Campaign Name", "Status", "Start Date", "Bottles", "Scans", "Unique Scans", "Clicks", "Leads", ""].map((h) => (
-                    <th key={h} className="px-6 py-4 text-[11px] font-bold text-slate-400 uppercase tracking-[0.1em]">{h}</th>
+                  {["Campaign Name", "Sponsor", "Status", "Unique Scans", "Start Date", "Total Bottles", "Total Scans", "Clicks", "Leads", "Actions"].map((h) => (
+                    <th key={h} className="px-6 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest">{h}</th>
                   ))}
                 </tr>
               </thead>
-              <AnimatedTbody className="divide-y divide-slate-50">
-                {campaigns.map((c) => (
-                  <AnimatedRow key={c.id} className="group hover:bg-slate-50/70 transition-colors">
+              <AnimatedTbody className="divide-y divide-slate-100">
+                {campaigns.map((c) => {
+                  const statusTextColor: Record<string, string> = {
+                    Live: "text-green-600",
+                    Draft: "text-purple-600",
+                    "In Review": "text-blue-600",
+                    Completed: "text-slate-500",
+                  };
+                  return (
+                  <AnimatedRow key={c.id} className="hover:bg-slate-50/50 transition-colors">
                     <td className="px-6 py-4">
-                      <div className="flex items-center gap-4">
-                        <div className={`w-10 h-10 rounded-xl ${c.iconBg} ${c.iconColor} ${c.iconExtra ?? ""} flex items-center justify-center`}>
-                          <Icon icon={c.icon} className="text-xl" />
-                        </div>
-                        <div>
-                          <p className={`font-bold ${c.iconExtra ? "text-slate-500" : "text-slate-900"}`}>{c.name}</p>
-                          <p className="text-xs text-slate-400 font-medium">ID: {c.id}</p>
-                        </div>
-                      </div>
+                      <span className="font-bold text-slate-900">{c.name}</span>
+                    </td>
+                    <td className="px-6 py-4 text-sm text-slate-600">Masafi Water</td>
+                    <td className="px-6 py-4">
+                      <span className={`text-sm font-semibold ${statusTextColor[c.status] ?? "text-slate-500"}`}>{c.status}</span>
                     </td>
                     <td className="px-6 py-4">
-                      <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-bold rounded-full border ${c.statusColor}`}>
-                        {c.dotColor && <span className={`w-1.5 h-1.5 rounded-full ${c.dotColor}`} />}
-                        {c.status}
+                      <span className={`text-sm font-bold ${c.uniqueScans === "0" ? "text-purple-600" : "text-purple-600"}`}>{c.uniqueScans}</span>
+                    </td>
+                    <td className="px-6 py-4">
+                      <span className={`text-sm text-slate-600 ${c.startMuted || c.startItalic ? "text-slate-400" : ""}`}>
+                        {c.startMuted || c.startItalic ? "—" : c.start}
                       </span>
                     </td>
                     <td className="px-6 py-4">
-                      <span className={`text-sm font-medium ${c.startMuted ? "text-slate-400" : c.startItalic ? "text-slate-400 italic" : "text-slate-600"}`}>
-                        {c.start}
-                      </span>
+                      <span className="text-sm font-bold text-slate-900">{c.bottles}</span>
                     </td>
                     <td className="px-6 py-4">
-                      <span className={`text-sm font-bold ${c.bottles === "0" && c.status !== "Completed" ? "text-slate-300" : "text-slate-600"}`}>{c.bottles}</span>
+                      <span className="text-sm text-slate-600">{c.scans}</span>
                     </td>
                     <td className="px-6 py-4">
-                      <span className={`text-sm font-bold ${c.scans === "0" && c.status !== "Completed" ? "text-slate-300" : "text-slate-900"}`}>{c.scans}</span>
+                      <span className="text-sm text-slate-600">{c.clicks === "—" ? "0" : c.clicks}</span>
                     </td>
                     <td className="px-6 py-4">
-                      <span className={`text-sm font-bold ${c.uniqueScans === "0" && c.status !== "Completed" ? "text-slate-300" : "text-purple-700"}`}>{c.uniqueScans}</span>
-                    </td>
-                    <td className="px-6 py-4">
-                      <span className={`text-sm font-bold ${c.clicks === "—" || (c.clicks === "0" && c.status !== "Completed") ? "text-slate-300 font-mono" : "text-slate-600"}`}>{c.clicks}</span>
-                    </td>
-                    <td className="px-6 py-4">
-                      <span className={`text-sm ${c.leads === null ? "" : c.leads === "—" ? "font-medium text-slate-400" : "font-medium text-slate-600"}`}>
-                        {c.leads ?? ""}
-                      </span>
+                      <span className="text-sm text-slate-600">{c.leads === null || c.leads === "—" ? "0" : c.leads}</span>
                     </td>
                     <td className="px-6 py-4 text-right">
-                      {c.action && (
-                        <Link
-                          href={`/sponsor/campaigns/${c.id}/overview`}
-                          className="inline-flex items-center gap-2 px-3 py-1.5 text-slate-400 hover:text-slate-900 hover:bg-slate-200/50 rounded-lg text-xs font-bold transition-all uppercase tracking-wider"
-                        >
-                          {c.action}
-                          <Icon icon={c.actionIcon!} />
-                        </Link>
-                      )}
+                      <Link
+                        href={`/sponsor/campaigns/${c.id}/overview`}
+                        className="text-[#D63839] text-xs font-bold uppercase tracking-wider hover:text-red-700 transition-colors"
+                      >
+                        View
+                      </Link>
                     </td>
                   </AnimatedRow>
-                ))}
+                  );
+                })}
               </AnimatedTbody>
             </table>
           </div>
