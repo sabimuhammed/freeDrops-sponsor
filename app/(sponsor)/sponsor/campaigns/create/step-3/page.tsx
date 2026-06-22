@@ -1,24 +1,22 @@
-"use client";
-import { useState } from "react";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import SponsorCampaignCreateSteps from "@/components/sponsor/CampaignCreateSteps";
 
-export default function SponsorCreateStep3Page() {
-  const [product, setProduct] = useState<"bottle" | "can">("bottle");
+export const metadata = { title: "Create Campaign - Step 3: Coupon | FreeDrops Sponsor Portal" };
 
+export default function SponsorCreateStep3Page() {
   return (
-    <div className="max-w-4xl mx-auto">
+    <div>
       <div className="flex items-center justify-between mb-8">
         <div className="space-y-1">
           <nav className="flex">
             <ol className="inline-flex items-center space-x-2 text-xs">
-              <li><Link href="/sponsor/campaigns" className="text-gray-400 hover:text-[#D63839]">My Campaigns</Link></li>
+              <li><Link href="/sponsor/campaigns" className="text-gray-400 hover:text-[#D63839]">Campaigns</Link></li>
               <li><Icon icon="lucide:chevron-right" className="text-gray-300 mx-1" /></li>
-              <li><span className="font-bold text-gray-900">New Request</span></li>
+              <li><span className="font-bold text-gray-900">Edit Campaign</span></li>
             </ol>
           </nav>
-          <h1 className="text-2xl font-bold text-gray-900">Create Campaign Request</h1>
+          <h1 className="text-2xl font-bold text-gray-900">Edit Campaign</h1>
         </div>
         <Link href="/sponsor/campaigns" className="text-sm font-medium text-gray-500 hover:text-gray-700 flex items-center gap-1">
           <Icon icon="lucide:x" />Cancel
@@ -27,127 +25,75 @@ export default function SponsorCreateStep3Page() {
 
       <SponsorCampaignCreateSteps current={3} />
 
-      <div className="bg-white border border-gray-200 rounded-3xl shadow-sm overflow-hidden">
-        <div className="p-10 border-b border-gray-100 space-y-10">
-          <div>
-            <div className="mb-2">
-              <span className="px-3 py-1 bg-red-50 text-[#D63839] text-[10px] font-bold uppercase tracking-widest rounded-full border border-red-100">Step 3 of 6</span>
-            </div>
-            <h2 className="text-2xl font-bold text-gray-900 mt-2">Packages & Creative</h2>
-            <p className="text-sm text-gray-500 mt-1">Select the type of product and specify the quantity for this campaign.</p>
-          </div>
-
-          {/* Product Type */}
-          <section>
-            <h3 className="text-base font-bold text-gray-900 mb-5 flex items-center gap-2">
-              <Icon icon="lucide:box" className="text-[#D63839]" />
-              Select Product Type
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Bottle */}
-              <button
-                type="button"
-                onClick={() => setProduct("bottle")}
-                className={`p-8 rounded-3xl border-2 flex flex-col items-center text-center gap-6 transition-all ${
-                  product === "bottle"
-                    ? "border-[#D63839] bg-red-50/40"
-                    : "border-slate-200 bg-white hover:border-red-200 hover:-translate-y-0.5"
-                }`}
-              >
-                <div className="h-48 flex items-center justify-center">
-                  <img
-                    src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/uploads/a28980ec-4fe4-4b74-8a39-48a7ae867000/1776693932611-109f10a0/ChatGPT_Image_Mar_24__2026__08_28_26_PM.png"
-                    alt="Bottle Mockup"
-                    className="h-full w-auto object-contain"
-                  />
-                </div>
-                <div>
-                  <h4 className="text-lg font-bold text-gray-900">Bottle</h4>
-                  <p className="text-sm text-gray-500 mt-1">Standard 500ml rPET Spring Water Bottle</p>
-                </div>
-                {product === "bottle" && (
-                  <Icon icon="lucide:check-circle-2" className="text-[#D63839] text-2xl" />
-                )}
-              </button>
-
-              {/* Can */}
-              <button
-                type="button"
-                onClick={() => setProduct("can")}
-                className={`p-8 rounded-3xl border-2 flex flex-col items-center text-center gap-6 transition-all ${
-                  product === "can"
-                    ? "border-[#D63839] bg-red-50/40"
-                    : "border-slate-200 bg-white hover:border-red-200 hover:-translate-y-0.5"
-                }`}
-              >
-                <div className="h-48 flex items-center justify-center">
-                  <img
-                    src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/uploads/a28980ec-4fe4-4b74-8a39-48a7ae867000/1776693925408-ee29e0eb/ChatGPT_Image_Mar_24__2026__08_28_18_PM.png"
-                    alt="Can Mockup"
-                    className="h-full w-auto object-contain"
-                  />
-                </div>
-                <div>
-                  <h4 className="text-lg font-bold text-gray-900">Can</h4>
-                  <p className="text-sm text-gray-500 mt-1">Premium 330ml Aluminum Infinitely Recyclable Can</p>
-                </div>
-                {product === "can" && (
-                  <Icon icon="lucide:check-circle-2" className="text-[#D63839] text-2xl" />
-                )}
-              </button>
-            </div>
-          </section>
-
-          {/* Inventory Allocation */}
-          <section className="bg-slate-50 rounded-3xl p-8 border border-slate-100">
-            <h3 className="text-base font-bold text-gray-900 mb-5 flex items-center gap-2">
-              <Icon icon="lucide:layers" className="text-[#D63839]" />
-              Inventory Allocation
-            </h3>
-            <div className="max-w-md">
-              <label className="block text-xs font-bold text-slate-700 mb-2 uppercase tracking-tight">
-                Number of Units
-              </label>
-              <div className="relative">
-                <select
-                  className="w-full appearance-none bg-white border border-slate-200 text-slate-900 font-medium rounded-xl focus:ring-2 focus:ring-[#D63839] focus:border-[#D63839] outline-none block p-4 pr-10 shadow-sm transition-all"
-                  defaultValue=""
-                >
-                  <option value="" disabled>Select number of units</option>
-                  <option value="5000">5,000 Units</option>
-                  <option value="10000">10,000 Units</option>
-                  <option value="25000">25,000 Units</option>
-                  <option value="50000">50,000 Units</option>
-                  <option value="100000">100,000 Units</option>
-                  <option value="250000">250,000 Units (Max)</option>
-                </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400">
-                  <Icon icon="lucide:chevron-down" />
-                </div>
-              </div>
-              <p className="mt-3 text-xs text-slate-400 italic">
-                Units are incremented by 1,000 for standard distribution logistics.
-              </p>
-            </div>
-          </section>
+      <div className="bg-white border border-gray-200 rounded-2xl p-8 space-y-8">
+        <div>
+          <h3 className="text-lg font-bold text-gray-900">Coupon / Offer Setup</h3>
+          <p className="text-sm text-gray-500 mt-1">Optionally attach a coupon or promotional offer to this campaign.</p>
         </div>
 
-        <div className="p-8 bg-slate-50/50 flex items-center justify-between">
-          <button className="px-8 py-3 text-sm font-bold text-slate-500 hover:text-slate-900">Save as Draft</button>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <label className="block text-[10px] font-bold text-gray-900 uppercase tracking-widest">Coupon Code</label>
+            <input type="text" placeholder="e.g. SUMMER20" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#D63839]/20 text-sm" />
+          </div>
+          <div className="space-y-2">
+            <label className="block text-[10px] font-bold text-gray-900 uppercase tracking-widest">Expiry Date</label>
+            <div className="relative">
+              <Icon icon="lucide:calendar" className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+              <input type="date" className="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#D63839]/20 text-sm text-gray-500" />
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <label className="block text-[10px] font-bold text-gray-900 uppercase tracking-widest">Discount Type</label>
+            <div className="relative">
+              <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#D63839]/20 text-sm appearance-none">
+                <option>Percentage Discount (%)</option>
+                <option>Fixed Amount (AED)</option>
+              </select>
+              <Icon icon="lucide:chevron-down" className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-gray-400" />
+            </div>
+          </div>
+          <div className="space-y-2">
+            <label className="block text-[10px] font-bold text-gray-900 uppercase tracking-widest">Max Redemptions</label>
+            <input type="text" placeholder="Unlimited" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#D63839]/20 text-sm" />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <label className="block text-[10px] font-bold text-gray-900 uppercase tracking-widest">Discount Value</label>
+            <div className="relative">
+              <input type="number" defaultValue={20} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#D63839]/20 text-sm pr-10" />
+              <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm">%</span>
+            </div>
+          </div>
+          <div className="flex items-center">
+            <div className="bg-amber-50 border border-amber-200 rounded-xl px-5 py-4 flex items-start gap-3">
+              <Icon icon="lucide:alert-circle" className="text-amber-500 text-lg mt-0.5 shrink-0" />
+              <p className="text-sm text-amber-700">Coupon is optional. Skip this step if no promotional code is needed for this campaign.</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-between pt-8 border-t border-gray-100">
+          <button className="text-sm font-bold text-gray-600 hover:text-gray-900 transition-colors">
+            Save Draft
+          </button>
           <div className="flex items-center gap-4">
-            <Link href="/sponsor/campaigns/create/step-2" className="px-8 py-4 text-sm font-bold text-slate-400 hover:text-slate-600 flex items-center gap-3">
+            <Link href="/sponsor/campaigns/create/step-2" className="flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-gray-700 transition-colors">
               <Icon icon="lucide:arrow-left" /> Back
             </Link>
-            <Link href="/sponsor/campaigns/create/step-4" className="flex items-center gap-3 bg-[#D63839] hover:opacity-90 text-white px-10 py-4 rounded-2xl text-sm font-bold transition-all shadow-lg shadow-red-200">
-              Continue to Coupons <Icon icon="lucide:arrow-right" />
+            <Link
+              href="/sponsor/campaigns/create/step-4"
+              className="flex items-center gap-2 bg-[#D63839] hover:opacity-90 text-white px-6 py-3 rounded-xl font-bold text-sm transition-all"
+            >
+              Next Step <Icon icon="lucide:arrow-right" />
             </Link>
           </div>
         </div>
-      </div>
-
-      <div className="mt-8 flex items-center justify-center gap-3 p-4 text-slate-400 text-sm">
-        <Icon icon="lucide:info" className="text-lg flex-shrink-0" />
-        <p>High-volume campaigns (over 100k units) may require an additional 14 days lead time.</p>
       </div>
     </div>
   );
