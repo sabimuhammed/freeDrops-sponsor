@@ -10,6 +10,11 @@ const navItems = [
   { id: "support", href: "/sponsor/support", icon: "lucide:headphones", label: "Support" },
 ];
 
+
+const reportingItems = [
+  { id: "analytics", href: "/sponsor/analytics", icon: "lucide:bar-chart-3", label: "Analytics" },
+];
+
 export default function SponsorSidebar() {
   const pathname = usePathname();
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
@@ -26,6 +31,29 @@ export default function SponsorSidebar() {
 
       <nav className="mt-4 flex-1 space-y-1 px-3">
         {navItems.map((item) => {
+          const active = isActive(item.href);
+          return (
+            <motion.div key={item.id} whileTap={{ scale: 0.97 }} className="relative">
+              {active && (
+                <motion.span
+                  layoutId="sponsor-nav-indicator"
+                  className="absolute inset-0 bg-red-50 rounded-lg border-r-2 border-[#D63839]"
+                  transition={{ type: "spring", stiffness: 380, damping: 34 }}
+                />
+              )}
+              <Link
+                href={item.href}
+                className={`relative flex items-center px-4 py-3 text-sm font-medium rounded-lg sidebar-link ${active ? "text-[#D63839]" : ""}`}
+              >
+                <Icon icon={item.icon} className="mr-3 text-lg" />
+                {item.label}
+              </Link>
+            </motion.div>
+          );
+        })}
+
+        <p className="px-4 pt-6 pb-2 text-[10px] font-bold text-gray-400 uppercase tracking-widest">Reporting</p>
+        {reportingItems.map((item) => {
           const active = isActive(item.href);
           return (
             <motion.div key={item.id} whileTap={{ scale: 0.97 }} className="relative">

@@ -40,7 +40,7 @@ export default function SponsorCampaignAnalyticsPage({ params }: { params: { id:
           { label: "Unique Scans", value: "12,504", icon: "lucide:qr-code", color: "text-[#D63839]", bg: "bg-red-50" },
           { label: "Total Clicks", value: "3,218", icon: "lucide:mouse-pointer-click", color: "text-blue-600", bg: "bg-blue-50" },
           { label: "Leads", value: "452", icon: "lucide:users", color: "text-emerald-600", bg: "bg-emerald-50" },
-          { label: "Conversion", value: "14.0%", icon: "lucide:trending-up", color: "text-purple-600", bg: "bg-purple-50" },
+          { label: "QR Engagement Rate", value: "14.0%", icon: "lucide:trending-up", color: "text-purple-600", bg: "bg-purple-50" },
         ].map((s) => (
           <AnimatedCell key={s.label} className="bg-white border border-gray-200 rounded-2xl p-5">
             <div className={`w-9 h-9 ${s.bg} rounded-xl flex items-center justify-center mb-3`}>
