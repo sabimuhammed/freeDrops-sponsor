@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 
-export default function CampaignDetailPage({ params }: { params: { id: string } }) {
-  redirect(`/sponsor/campaigns/${params.id}/overview`);
+export default async function CampaignDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  redirect(`/sponsor/campaigns/${id}/overview`);
 }

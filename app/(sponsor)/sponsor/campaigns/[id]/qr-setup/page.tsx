@@ -5,7 +5,8 @@ import AnimatedPage from "@/components/shared/AnimatedPage";
 
 export const metadata = { title: "QR Action Setup | FreeDrops Sponsor Portal" };
 
-export default function QRSetupPage({ params }: { params: { id: string } }) {
+export default async function QRSetupPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   return (
     <AnimatedPage>
     <div>
@@ -22,7 +23,7 @@ export default function QRSetupPage({ params }: { params: { id: string } }) {
         </div>
       </div>
 
-      <CampaignDetailTabs id={params.id} active="qr-setup" />
+      <CampaignDetailTabs id={id} active="qr-setup" />
 
       <div className="max-w-2xl">
         <div className="bg-white border border-gray-200 rounded-2xl p-8">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, use } from "react";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import CampaignDetailTabs from "@/components/sponsor/CampaignDetailTabs";
@@ -31,7 +31,8 @@ const scans: ScanEntry[] = [
 
 const PAGE_SIZE = 5;
 
-export default function SponsorCampaignScanInfoPage({ params }: { params: { id: string } }) {
+export default function SponsorCampaignScanInfoPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = Math.ceil(scans.length / PAGE_SIZE);
@@ -59,7 +60,7 @@ export default function SponsorCampaignScanInfoPage({ params }: { params: { id: 
         </div>
       </div>
 
-      <CampaignDetailTabs id={params.id} active="scan-info" />
+      <CampaignDetailTabs id={id} active="scan-info" />
 
       {/* Detailed Scan Log card */}
       <div className="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">

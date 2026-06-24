@@ -16,7 +16,8 @@ const assets = [
   },
 ];
 
-export default function SponsorCampaignCreativePage({ params }: { params: { id: string } }) {
+export default async function SponsorCampaignCreativePage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   return (
     <AnimatedPage>
     <div>
@@ -33,11 +34,11 @@ export default function SponsorCampaignCreativePage({ params }: { params: { id: 
         </div>
       </div>
 
-      <CampaignDetailTabs id={params.id} active="creative" />
+      <CampaignDetailTabs id={id} active="creative" />
 
       <AnimatedGrid className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-2">
         {assets.map((a) => (
-          <AnimatedCell key={a.name} className="bg-white border border-gray-200 rounded-2xl overflow-hidden">
+          <AnimatedCell key={a.name} className="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:border-[#D63839] hover:shadow-md hover:shadow-red-100 transition-all">
             <div className="bg-gray-50 h-48 flex items-center justify-center border-b border-gray-100">
               <Icon icon="lucide:image" className="text-5xl text-gray-300" />
             </div>
@@ -53,7 +54,7 @@ export default function SponsorCampaignCreativePage({ params }: { params: { id: 
             </div>
             <div className="flex items-center justify-between px-5 py-3 border-t border-gray-100">
               <span className="text-xs text-gray-400 font-medium">Review Completed</span>
-              <button className="text-gray-400 hover:text-gray-600 transition-colors">
+              <button className="text-gray-400 hover:text-gray-600 transition-colors cursor-pointer">
                 <Icon icon="lucide:download" className="text-lg" />
               </button>
             </div>

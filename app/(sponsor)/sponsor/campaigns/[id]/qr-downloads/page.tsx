@@ -5,7 +5,8 @@ import AnimatedPage from "@/components/shared/AnimatedPage";
 
 export const metadata = { title: "QR Links | FreeDrops Sponsor Portal" };
 
-export default function QRLinksPage({ params }: { params: { id: string } }) {
+export default async function QRLinksPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   return (
     <AnimatedPage>
     <div>
@@ -22,7 +23,7 @@ export default function QRLinksPage({ params }: { params: { id: string } }) {
         </div>
       </div>
 
-      <CampaignDetailTabs id={params.id} active="qr-downloads" />
+      <CampaignDetailTabs id={id} active="qr-downloads" />
 
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 mb-6">
         <div className="lg:col-span-2 bg-white border border-gray-200 rounded-2xl p-6">
@@ -89,7 +90,7 @@ export default function QRLinksPage({ params }: { params: { id: string } }) {
               </div>
             </div>
             <Link
-              href={`/sponsor/campaigns/${params.id}/scan-info`}
+              href={`/sponsor/campaigns/${id}/scan-info`}
               className="flex items-center gap-2 text-sm font-semibold text-gray-600 hover:text-[#D63839] transition-colors"
             >
               View Detailed Logs

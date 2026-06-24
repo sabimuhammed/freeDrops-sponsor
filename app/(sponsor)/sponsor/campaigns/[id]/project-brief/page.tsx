@@ -5,7 +5,8 @@ import AnimatedPage from "@/components/shared/AnimatedPage";
 
 export const metadata = { title: "Project Brief | FreeDrops Sponsor Portal" };
 
-export default function SponsorCampaignProjectBriefPage({ params }: { params: { id: string } }) {
+export default async function SponsorCampaignProjectBriefPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   return (
     <AnimatedPage>
     <div>
@@ -23,7 +24,7 @@ export default function SponsorCampaignProjectBriefPage({ params }: { params: { 
         </div>
       </div>
 
-      <CampaignDetailTabs id={params.id} active="project-brief" />
+      <CampaignDetailTabs id={id} active="project-brief" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-6">

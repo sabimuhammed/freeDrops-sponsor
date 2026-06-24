@@ -6,7 +6,8 @@ import { AnimatedGrid, AnimatedCell } from "@/components/shared/AnimatedGrid";
 
 export const metadata = { title: "Campaign Analytics | FreeDrops Sponsor Portal" };
 
-export default function SponsorCampaignAnalyticsPage({ params }: { params: { id: string } }) {
+export default async function SponsorCampaignAnalyticsPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   return (
     <AnimatedPage>
     <div>
@@ -26,7 +27,7 @@ export default function SponsorCampaignAnalyticsPage({ params }: { params: { id:
         </button>
       </div>
 
-      <CampaignDetailTabs id={params.id} active="analytics" />
+      <CampaignDetailTabs id={id} active="analytics" />
 
       <AnimatedGrid className="grid grid-cols-2 lg:grid-cols-6 gap-4 mb-8">
         {[

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, use } from "react";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import CampaignDetailTabs from "@/components/sponsor/CampaignDetailTabs";
@@ -20,7 +20,8 @@ const statusColors: Record<string, string> = {
 
 type Lead = (typeof leads)[number];
 
-export default function SponsorCampaignLeadsPage({ params }: { params: { id: string } }) {
+export default function SponsorCampaignLeadsPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
   const [activeStatus, setActiveStatus] = useState("New");
 
@@ -43,7 +44,7 @@ export default function SponsorCampaignLeadsPage({ params }: { params: { id: str
         </button>
       </div>
 
-      <CampaignDetailTabs id={params.id} active="leads" />
+      <CampaignDetailTabs id={id} active="leads" />
 
       <AnimatedGrid className="grid grid-cols-3 gap-4 mb-6">
         {[
