@@ -22,11 +22,11 @@ export default function SponsorAnalyticsPage() {
 
       <AnimatedGrid className="grid grid-cols-2 lg:grid-cols-6 gap-4 mb-8">
         {[
-          { label: "Total Bottles", value: "44,702", icon: "lucide:package", color: "text-[#D63839]", bg: "bg-red-50" },
-          { label: "Total Scans", value: "112", icon: "lucide:scan-qr-code", color: "text-[#D63839]", bg: "bg-red-50" },
-          { label: "Unique Scans", value: "21", icon: "lucide:qr-code", color: "text-blue-600", bg: "bg-blue-50" },
-          { label: "Total Clicks", value: "7", icon: "lucide:mouse-pointer-click", color: "text-blue-600", bg: "bg-blue-50" },
-          { label: "Total Leads", value: "2", icon: "lucide:users", color: "text-emerald-600", bg: "bg-emerald-50" },
+          { label: "Total Bottles", value: "44,702", icon: "lucide:package-check", color: "text-[#D63839]", bg: "bg-red-50" },
+          { label: "Total Unique Scans", value: "21", icon: "lucide:qr-code", color: "text-[#D63839]", bg: "bg-red-50" },
+          { label: "Total Scans", value: "112", icon: "lucide:scan-line", color: "text-[#D63839]", bg: "bg-red-50" },
+          { label: "Total Clicks", value: "7", icon: "lucide:mouse-pointer-2", color: "text-emerald-600", bg: "bg-emerald-50" },
+          { label: "Total Leads", value: "2", icon: "lucide:user-round-plus", color: "text-amber-600", bg: "bg-amber-50" },
           { label: "QR Engagement Rate", value: "18.8%", icon: "lucide:trending-up", color: "text-purple-600", bg: "bg-purple-50" },
         ].map((s) => (
           <AnimatedCell key={s.label} className="bg-white border border-gray-200 rounded-2xl p-5">

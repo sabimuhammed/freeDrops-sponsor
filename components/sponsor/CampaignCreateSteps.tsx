@@ -2,11 +2,12 @@
 import Link from "next/link";
 
 const steps = [
-  { num: 1, label: "Basics", href: "/sponsor/campaigns/create/step-1" },
-  { num: 2, label: "Creative & CTA", href: "/sponsor/campaigns/create/step-2" },
-  { num: 3, label: "Coupon", href: "/sponsor/campaigns/create/step-3" },
-  { num: 4, label: "Locations & Tags", href: "/sponsor/campaigns/create/step-4" },
-  { num: 5, label: "Review", href: "/sponsor/campaigns/create/review" },
+  { num: 1, label: "Project Brief", href: "/sponsor/campaigns/create/project-brief" },
+  { num: 2, label: "Basics", href: "/sponsor/campaigns/create/step-1" },
+  { num: 3, label: "Creative & CTA", href: "/sponsor/campaigns/create/step-2" },
+  { num: 4, label: "Coupon", href: "/sponsor/campaigns/create/step-3" },
+  { num: 5, label: "Locations & Tags", href: "/sponsor/campaigns/create/step-4" },
+  { num: 6, label: "Review", href: "/sponsor/campaigns/create/review" },
 ];
 
 export default function SponsorCampaignCreateSteps({ current }: { current: number }) {

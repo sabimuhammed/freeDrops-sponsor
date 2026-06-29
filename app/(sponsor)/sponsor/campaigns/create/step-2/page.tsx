@@ -30,7 +30,7 @@ export default function SponsorCreateStep2Page() {
         </Link>
       </div>
 
-      <SponsorCampaignCreateSteps current={2} />
+      <SponsorCampaignCreateSteps current={3} />
 
       <div className="bg-white border border-gray-200 rounded-2xl p-8 space-y-8">
         <h3 className="text-lg font-bold text-gray-900">Choose QR Action Type</h3>

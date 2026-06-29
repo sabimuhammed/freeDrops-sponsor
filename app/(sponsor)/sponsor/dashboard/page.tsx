@@ -2,11 +2,12 @@ import Link from "next/link";
 import { Icon } from "@iconify/react";
 import AnimatedPage from "@/components/shared/AnimatedPage";
 import { AnimatedGrid, AnimatedCell, AnimatedTbody, AnimatedRow } from "@/components/shared/AnimatedGrid";
+import AnimatedCounter from "@/components/shared/AnimatedCounter";
 
 export const metadata = { title: "Sponsor Dashboard | FreeDrops" };
 
 const stats = [
-  { label: "Bottles Scanned", value: "2,450", icon: "lucide:package-check", color: "text-[#D63839]", bg: "bg-red-50" },
+  { label: "Total Bottles", value: "2,450", icon: "lucide:package-check", color: "text-[#D63839]", bg: "bg-red-50" },
   { label: "Total Unique Scans", value: "12,504", icon: "lucide:qr-code", color: "text-[#D63839]", bg: "bg-red-50" },
   { label: "Total Scans", value: "14,205", icon: "lucide:scan-line", color: "text-[#D63839]", bg: "bg-red-50" },
   { label: "Total CTA Clicks", value: "3,110", icon: "lucide:mouse-pointer-2", color: "text-emerald-600", bg: "bg-emerald-50" },
@@ -97,7 +98,7 @@ export default function SponsorDashboardPage() {
             </div>
 
             <Link
-              href="/sponsor/campaigns/create/step-1"
+              href="/sponsor/campaigns/create/project-brief"
               className="bg-[#D63839] text-white px-5 py-2.5 rounded-xl font-bold text-sm flex items-center gap-2 hover:opacity-90 transition-all"
             >
               <Icon icon="lucide:plus" />
@@ -122,7 +123,9 @@ export default function SponsorDashboardPage() {
                 <Icon icon={s.icon} className="text-2xl" />
               </div>
               <p className="text-sm font-medium text-slate-500 mb-1">{s.label}</p>
-              <h3 className="text-3xl font-bold text-slate-900">{s.value}</h3>
+              <h3 className="text-3xl font-bold text-slate-900">
+                <AnimatedCounter value={s.value} />
+              </h3>
             </AnimatedCell>
           ))}
         </AnimatedGrid>

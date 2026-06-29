@@ -163,7 +163,7 @@ export default function MyCampaignsPage() {
               />
             </div>
             <Link
-              href="/sponsor/campaigns/create/step-1"
+              href="/sponsor/campaigns/create/project-brief"
               className="bg-[#D63839] text-white px-5 py-2.5 rounded-xl font-bold text-sm flex items-center gap-2 hover:opacity-90 transition-all"
             >
               <Icon icon="lucide:plus" />

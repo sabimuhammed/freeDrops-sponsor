@@ -63,6 +63,7 @@ export default async function SponsorCampaignOverviewPage({ params }: { params: 
             { label: "Locations", value: "2 (Dubai)" },
             { label: "Location Names", value: "Dubai Mall, Mall of Emirates" },
             { label: "Lead Rate", value: "14.0%" },
+            { label: "QR Engagement Rate", value: "94.7%" },
             { label: "Status", value: "Live" },
           ].map((r) => (
             <div key={r.label} className="flex justify-between py-2 border-b border-gray-50 last:border-0">

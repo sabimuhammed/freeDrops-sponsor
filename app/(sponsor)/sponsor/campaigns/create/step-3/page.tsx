@@ -23,7 +23,7 @@ export default function SponsorCreateStep3Page() {
         </Link>
       </div>
 
-      <SponsorCampaignCreateSteps current={3} />
+      <SponsorCampaignCreateSteps current={4} />
 
       <div className="bg-white border border-gray-200 rounded-2xl p-8 space-y-8">
         <div>

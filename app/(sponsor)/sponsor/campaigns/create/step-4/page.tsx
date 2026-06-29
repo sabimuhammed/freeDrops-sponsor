@@ -45,7 +45,7 @@ export default function SponsorCreateStep4Page() {
         </Link>
       </div>
 
-      <SponsorCampaignCreateSteps current={4} />
+      <SponsorCampaignCreateSteps current={5} />
 
       <div className="bg-white border border-gray-200 rounded-2xl p-8 space-y-8">
         <div>
