@@ -13,17 +13,11 @@ const locations = [
 
 export default function SponsorCreateStep4Page() {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [selectedLocations, setSelectedLocations] = useState<string[]>([]);
+  const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
 
   const toggleTag = (tag: string) => {
     setSelectedTags((prev) =>
       prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
-    );
-  };
-
-  const toggleLocation = (name: string) => {
-    setSelectedLocations((prev) =>
-      prev.includes(name) ? prev.filter((n) => n !== name) : [...prev, name]
     );
   };
 
@@ -97,9 +91,9 @@ export default function SponsorCreateStep4Page() {
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <label className="block text-[10px] font-bold text-gray-900 uppercase tracking-widest">Assigned Location</label>
-            {selectedLocations.length > 0 && (
+            {selectedLocation && (
               <button
-                onClick={() => setSelectedLocations([])}
+                onClick={() => setSelectedLocation(null)}
                 className="text-sm font-semibold text-[#D63839] hover:text-red-700 transition-colors"
               >
                 Clear Selection
@@ -117,11 +111,11 @@ export default function SponsorCreateStep4Page() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {locations.map((loc) => {
-              const active = selectedLocations.includes(loc.name);
+              const active = selectedLocation === loc.name;
               return (
                 <button
                   key={loc.name}
-                  onClick={() => toggleLocation(loc.name)}
+                  onClick={() => setSelectedLocation(loc.name)}
                   className={`flex items-center gap-4 p-4 border-2 rounded-xl text-left transition-colors ${
                     active ? "border-[#D63839] bg-red-50/30" : "border-gray-200 hover:border-gray-300"
                   }`}
