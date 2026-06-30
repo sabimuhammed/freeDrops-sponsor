@@ -25,9 +25,16 @@ export default function AnimatedCounter({ value, className }: { value: string; c
   const [display, setDisplay] = useState(0);
   const rafRef = useRef<number | null>(null);
   const startRef = useRef<number | null>(null);
+  const mountedRef = useRef(false);
   const duration = 1400;
 
   useEffect(() => {
+    if (mountedRef.current) {
+      // After initial mount, just update instantly
+      setDisplay(number);
+      return;
+    }
+    mountedRef.current = true;
     startRef.current = null;
 
     function easeOutExpo(t: number) {

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Icon } from "@iconify/react";
 import AnimatedPage from "@/components/shared/AnimatedPage";
 import { AnimatedGrid, AnimatedCell, AnimatedTbody, AnimatedRow } from "@/components/shared/AnimatedGrid";
-import AnimatedCounter from "@/components/shared/AnimatedCounter";
+import DashboardStats from "@/components/sponsor/DashboardStats";
 
 export const metadata = { title: "Sponsor Dashboard | FreeDrops" };
 
@@ -116,19 +116,7 @@ export default function SponsorDashboardPage() {
         </div>
 
         {/* Stats Grid */}
-        <AnimatedGrid className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-          {stats.map((s) => (
-            <AnimatedCell key={s.label} className="bg-white p-6 rounded-3xl login-card">
-              <div className={`w-12 h-12 ${s.bg} ${s.color} rounded-2xl flex items-center justify-center mb-5`}>
-                <Icon icon={s.icon} className="text-2xl" />
-              </div>
-              <p className="text-sm font-medium text-slate-500 mb-1">{s.label}</p>
-              <h3 className="text-3xl font-bold text-slate-900">
-                <AnimatedCounter value={s.value} />
-              </h3>
-            </AnimatedCell>
-          ))}
-        </AnimatedGrid>
+        <DashboardStats />
 
         {/* Top Campaigns */}
         <div className="bg-white rounded-3xl login-card overflow-hidden">
